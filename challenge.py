@@ -3,7 +3,10 @@ def make_division_by(n):
        of an x number by n 
     """
     # You have to code here!
-    pass
+    def numerator(d):
+        assert type(d) == int or type(d) == float or d != 0, 'El denominador ingresado debe ser un numero y diferente a 0 '
+        return d / n
+    return numerator
 
 
 def run():
@@ -21,8 +24,18 @@ if __name__ == '__main__':
     import unittest
 
     class ClosureSuite(unittest.TestCase):
+        def setUp(self):
+            self.n = [[5,2],[8,4],[6,3],[15,2]]
+            
         def test_closure_make_division_by(self):
             # Make the closure test here
-            pass
+            for i in self.n:
+                division = make_division_by(i[1])
+                self.assertEqual(i[0]/i[1] , division(i[0]) )
+        
+        def tearDown(self):
+            del self.n
 
+
+    # unittest.main()
     run()
